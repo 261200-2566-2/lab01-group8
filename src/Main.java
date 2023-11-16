@@ -1,10 +1,20 @@
-import java.util.Arrays;
 import java.util.Scanner;
 public class Main {
-    public static void printSort(int[] myList,int n) {
-        Arrays.sort(myList);
+    public static void sort(int[] arr,int n) {
+        int key;
+        for (int i = 1; i <n; ++i) {
+            key = arr[i];
+            int j = i-1;
+            while (arr[j]>key && j >= 0){
+                arr[j+1] = arr[j];
+                j = j-1;
+            }
+            arr[j+1] = key;
+        }
+    }
+    public static void printArr(int[] arr,int n) {
         for (int i = 0; i <n; i++) {
-            System.out.print(myList[i] + " ");
+            System.out.print(arr[i] + " ");
         }
     }
     public static void main(String[] args) {
@@ -15,6 +25,7 @@ public class Main {
         for (int i = 0; i <n; i++) {
             arr[i] = Integer.parseInt(s.nextLine());
         }
-        Main.printSort(arr,n);
+        Main.sort(arr,n);
+        Main.printArr(arr,n);
     }
 }
